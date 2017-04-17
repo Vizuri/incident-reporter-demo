@@ -19,17 +19,17 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>vaadin-addons</id>
-        <url>http://maven.vaadin.com/vaadin-addons</url>
-        <source>SETTINGS</source>
+        <id>local</id>
+        <url>~/.m2/repository</url>
+        <source>LOCAL</source>
       </metadata>
     </repository>
     <repository>
       <include>true</include>
       <metadata>
-        <id>local</id>
-        <url>~/.m2/repository</url>
-        <source>LOCAL</source>
+        <id>vaadin-addons</id>
+        <url>http://maven.vaadin.com/vaadin-addons</url>
+        <source>SETTINGS</source>
       </metadata>
     </repository>
   </repositories>
