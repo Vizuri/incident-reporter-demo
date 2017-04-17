@@ -3,14 +3,6 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>guvnor-m2-repo</id>
-        <url>http://localhost:8080/business-central/maven2/</url>
-        <source>PROJECT</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
         <id>central</id>
         <url>https://repo.maven.apache.org/maven2</url>
         <source>PROJECT</source>
@@ -38,6 +30,14 @@
         <id>local</id>
         <url>/Users/kspokas/.m2/repository</url>
         <source>LOCAL</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>guvnor-m2-repo</id>
+        <url>http://localhost:8080/business-central/maven2/</url>
+        <source>PROJECT</source>
       </metadata>
     </repository>
   </repositories>
