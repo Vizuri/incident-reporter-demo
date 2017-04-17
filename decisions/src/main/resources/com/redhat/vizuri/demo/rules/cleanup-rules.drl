@@ -1,0 +1,15 @@
+package com.redhat.vizuri.demo.rules;
+
+import com.redhat.vizuri.demo.domain.Questionnaire;
+import com.redhat.vizuri.demo.domain.Question;
+
+// comment
+rule "add-questions"
+    agenda-group "question-cleanup"
+when
+    $q : Questionnaire ( )
+    $question : Question ( $question.questionnaireId == $q.id, $q.questions not contains $question )
+then
+    $q.addQuestion( $question );
+    update($q);
+end;
