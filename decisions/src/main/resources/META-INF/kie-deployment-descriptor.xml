@@ -8,7 +8,7 @@
     <marshalling-strategies>
         <marshalling-strategy>
             <resolver>mvel</resolver>
-            <identifier>new org.drools.persistence.jpa.marshaller.JPAPlaceholderResolverStrategy("vizuri-summit-2017:decisions:0.0.1-SNAPSHOT", classLoader)</identifier>
+            <identifier>new org.drools.persistence.jpa.marshaller.JPAPlaceholderResolverStrategy("summit17:mobile-claim-rules:1.0-SNAPSHOT", classLoader)</identifier>
             <parameters/>
         </marshalling-strategy>
     </marshalling-strategies>
