@@ -3,7 +3,7 @@ package com.redhat.vizuri.demo.rules;
 import com.redhat.vizuri.demo.domain.Questionnaire;
 import com.redhat.vizuri.demo.domain.Question;
 
-// comment
+// consolidate questions into questionnaire
 rule "add-questions"
     agenda-group "question-cleanup"
 when
