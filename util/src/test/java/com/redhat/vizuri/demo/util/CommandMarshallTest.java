@@ -8,6 +8,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.drools.core.command.impl.GenericCommand;
 import org.drools.core.command.runtime.BatchExecutionCommandImpl;
+import org.drools.core.command.runtime.rule.AgendaGroupSetFocusCommand;
 import org.drools.core.command.runtime.rule.FireAllRulesCommand;
 import org.drools.core.command.runtime.rule.InsertObjectCommand;
 import org.drools.core.command.runtime.rule.QueryCommand;
@@ -16,6 +17,8 @@ import org.kie.server.api.marshalling.Marshaller;
 import org.kie.server.api.marshalling.MarshallerFactory;
 import org.kie.server.api.marshalling.MarshallingFormat;
 import org.openshift.quickstarts.decisionserver.hellorules.Person;
+
+import com.redhat.vizuri.demo.domain.Incident;
 
 public class CommandMarshallTest {
 	private static final transient Logger logger = Logger.getLogger(CommandMarshallTest.class);
@@ -47,5 +50,33 @@ public class CommandMarshallTest {
         
         String marshalled = marshaller.marshall(batch);
         logger.info(">>> " + marshalled);
+	}
+	
+	@Test
+	public void testMarshallGetAvailableQuestionnaires() {
+		Set<Class<?>> classes = new HashSet<Class<?>>();
+		classes.add(Incident.class);
+		Marshaller marshaller = MarshallerFactory.getMarshaller(classes,  MarshallingFormat.JSON, CommandMarshallTest.class.getClassLoader());
+		
+		Incident incident = new Incident();
+		incident.setIncidentType("windshield");
+		
+		InsertObjectCommand insertCmd = new InsertObjectCommand(incident, "incident");
+		insertCmd.setReturnObject(false);
+		
+		List<GenericCommand<?>> cmds = new ArrayList<GenericCommand<?>>();
+		cmds.add(insertCmd);
+		cmds.add(new AgendaGroupSetFocusCommand("construct-customer-questions"));
+		cmds.add(new FireAllRulesCommand("construct-fired"));
+		cmds.add(new AgendaGroupSetFocusCommand("question-cleanup"));
+		cmds.add(new FireAllRulesCommand("cleanup-fired"));
+		cmds.add(new AgendaGroupSetFocusCommand("MAIN"));
+		cmds.add(new QueryCommand("questionnaires", "get-questionnaires"));
+		
+		BatchExecutionCommandImpl batch = new BatchExecutionCommandImpl(cmds);
+		//batch.setLookup("HelloRulesSession");
+		
+		String marshalled = marshaller.marshall(batch);
+		logger.info(">>> " + marshalled);
 	}
 }
