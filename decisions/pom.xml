@@ -24,4 +24,17 @@
       </plugin>
     </plugins>
   </build>
+  
+  <profiles>
+  	<profile>
+  		<id>openshift</id>
+  		<repositories>
+  			<repository>
+  				<id>custom-repo</id>
+  				<name>custom repo</name>
+  				<url>${env.CUSTOM_NEXUS_URL}</url>
+  			</repository>
+  		</repositories>
+  	</profile>
+  </profiles>
 </project>
