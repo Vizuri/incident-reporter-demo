@@ -12,4 +12,8 @@ when
 then
     $q.addQuestion( $question );
     update($q);
-end;
+end
+
+query "get-questionnaires"
+	questionnaire : Questionnaire()
+end
