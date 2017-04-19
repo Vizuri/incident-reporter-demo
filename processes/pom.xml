@@ -7,6 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>kjar</packaging>
   <name>processes</name>
+  
   <dependencies>
     <dependency>
       <groupId>com.redhat.vizuri.summit17</groupId>
@@ -15,6 +16,11 @@
     </dependency>
   </dependencies>
   <repositories>
+  	<repository>
+		<id>custom-repo</id>
+		<name>custom repo</name>
+		<url>http://nexus-nexus.apps.ocp.hucmaggie.com/repository/maven-snapshots/</url>
+	</repository>
     <repository>
       <id>guvnor-m2-repo</id>
       <name>Guvnor M2 Repo</name>
