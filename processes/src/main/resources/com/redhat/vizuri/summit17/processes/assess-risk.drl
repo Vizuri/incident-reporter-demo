@@ -8,7 +8,7 @@ rule "High risk incident"
     agenda-group "assess-risk"
 when 
     Incident( incidentType == "danger")
-    $r: Remediation ( priority < 10 )
+    $r: Remediation ( priority == null )
 then
     modify($r) {
         setPriority(10)
