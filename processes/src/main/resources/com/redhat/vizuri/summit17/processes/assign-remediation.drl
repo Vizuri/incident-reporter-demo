@@ -2,7 +2,6 @@ package com.redhat.vizuri.summit17.processes;
 
 import com.redhat.vizuri.demo.domain.Remediation;
 import com.redhat.vizuri.demo.domain.Status;
-import com.redhat.vizuri.demo.domain.Step;
 import java.util.ArrayList;
 
 dialect "mvel"
@@ -15,18 +14,6 @@ when
 then
     modify ($r) {
         setWorkerId(99l);
-    }
-end
-
-rule "Add steps"
-    agenda-group "assign-remediation"
-when
-    $i : Incident ( )
-    $r : Remediation ( incidentId == $i.id, steps == null )
-    $steps : ArrayList ( )
-        from collect ( Step ( ) )
-then
-    modify ($r) {
-        setSteps($steps);
+        setStatus(Status.ASSIGNED)
     }
 end
