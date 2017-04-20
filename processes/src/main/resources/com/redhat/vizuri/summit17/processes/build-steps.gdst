@@ -9,7 +9,20 @@
     <width>-1</width>
   </descriptionCol>
   <metadataCols/>
-  <attributeCols/>
+  <attributeCols>
+    <attribute-column52>
+      <typedDefaultValue>
+        <valueString>assess-risk</valueString>
+        <dataType>STRING</dataType>
+        <isOtherwise>false</isOtherwise>
+      </typedDefaultValue>
+      <hideColumn>true</hideColumn>
+      <width>-1</width>
+      <attribute>agenda-group</attribute>
+      <reverseOrder>false</reverseOrder>
+      <useRowNumber>false</useRowNumber>
+    </attribute-column52>
+  </attributeCols>
   <conditionPatterns/>
   <actionCols/>
   <auditLog>
@@ -40,7 +53,14 @@
     <entries/>
   </auditLog>
   <imports>
-    <imports/>
+    <imports>
+      <org.drools.workbench.models.datamodel.imports.Import>
+        <type>com.redhat.vizuri.demo.domain.Incident</type>
+      </org.drools.workbench.models.datamodel.imports.Import>
+      <org.drools.workbench.models.datamodel.imports.Import>
+        <type>com.redhat.vizuri.demo.domain.Step</type>
+      </org.drools.workbench.models.datamodel.imports.Import>
+    </imports>
   </imports>
   <packageName>com.redhat.vizuri.summit17.processes</packageName>
   <tableFormat>EXTENDED_ENTRY</tableFormat>
