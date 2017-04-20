@@ -3,39 +3,7 @@
 <property name="name" value="remediate-taskform.form"/>
 <property name="displayMode" value="default"/>
 <property name="status" value="0"/>
-<field position="5" name="remediation_workerId" type="InputTextLong" id="1484617261">
-<property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;workerId (remediation)quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="remediation/workerId"/>
-<property name="outputBinding" value="remediation/workerId"/>
-<property name="fieldClass" value="java.lang.Long"/>
-</field>
-<field position="4" name="remediation_steps" bag-type="com.redhat.vizuri.demo.domain.Step" type="MultipleSubform" id="1187008628">
-<property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;steps (remediation)quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="remediation/steps"/>
-<property name="outputBinding" value="remediation/steps"/>
-<property name="fieldClass" value="java.util.List"/>
-</field>
-<field position="0" name="remediation_id" type="InputTextLong" id="1448024424">
-<property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;id (remediation)quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="remediation/id"/>
-<property name="outputBinding" value="remediation/id"/>
-<property name="fieldClass" value="java.lang.Long"/>
-</field>
-<field position="3" name="remediation_status" type="Subform" id="525308598">
-<property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;status (remediation)quot;"/>
-<property name="readonly" value="false"/>
-<property name="inputBinding" value="remediation/status"/>
-<property name="outputBinding" value="remediation/status"/>
-<property name="fieldClass" value="java.lang.Object"/>
-</field>
-<field position="2" name="remediation_priority" type="InputTextInteger" id="1365021809">
+<field position="0" name="remediation_priority" type="InputTextInteger" id="1365021809">
 <property name="fieldRequired" value="false"/>
 <property name="label" value="quot;enquot;,quot;priority (remediation)quot;"/>
 <property name="readonly" value="false"/>
@@ -43,12 +11,12 @@
 <property name="outputBinding" value="remediation/priority"/>
 <property name="fieldClass" value="java.lang.Integer"/>
 </field>
-<field position="1" name="remediation_incidentId" type="InputTextLong" id="1886897928">
+<field position="1" name="remediation_workerId" type="InputTextLong" id="1484617261">
 <property name="fieldRequired" value="false"/>
-<property name="label" value="quot;enquot;,quot;incidentId (remediation)quot;"/>
+<property name="label" value="quot;enquot;,quot;workerId (remediation)quot;"/>
 <property name="readonly" value="false"/>
-<property name="inputBinding" value="remediation/incidentId"/>
-<property name="outputBinding" value="remediation/incidentId"/>
+<property name="inputBinding" value="remediation/workerId"/>
+<property name="outputBinding" value="remediation/workerId"/>
 <property name="fieldClass" value="java.lang.Long"/>
 </field>
 <dataHolder supportedType="className" inputId="remediation" name="#FF54A7" type="dataModelerEntry" outId="remediation" value="com.redhat.vizuri.demo.domain.Remediation" id="remediation"/>
