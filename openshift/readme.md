@@ -14,3 +14,11 @@ Setup steps
 
 oc create -f jboss-image-streams.json
 oc create -f decisionserver63-basic-s2i.json
+
+
+Spring Boot
+
+Original s2i definition:
+  https://github.com/jorgemoralespou/osev3-examples/tree/master/spring-boot/springboot-sti
+
+oc create -f springboot-sti-all.json
