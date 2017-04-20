@@ -23,7 +23,64 @@
       <useRowNumber>false</useRowNumber>
     </attribute-column52>
   </attributeCols>
-  <conditionPatterns/>
+  <conditionPatterns>
+    <Pattern52>
+      <factType>Incident</factType>
+      <boundName>$i</boundName>
+      <isNegated>false</isNegated>
+      <conditions>
+        <condition-column52>
+          <typedDefaultValue>
+            <valueString></valueString>
+            <dataType>STRING</dataType>
+            <isOtherwise>false</isOtherwise>
+          </typedDefaultValue>
+          <hideColumn>false</hideColumn>
+          <width>-1</width>
+          <header>Incident Type</header>
+          <constraintValueType>1</constraintValueType>
+          <factField>incidentType</factField>
+          <fieldType>String</fieldType>
+          <operator>==</operator>
+          <parameters/>
+        </condition-column52>
+        <condition-column52>
+          <typedDefaultValue>
+            <valueString></valueString>
+            <dataType>STRING</dataType>
+            <isOtherwise>false</isOtherwise>
+          </typedDefaultValue>
+          <hideColumn>false</hideColumn>
+          <width>-1</width>
+          <header>Building Name</header>
+          <constraintValueType>1</constraintValueType>
+          <factField>buildingName</factField>
+          <fieldType>String</fieldType>
+          <operator>==</operator>
+          <parameters/>
+        </condition-column52>
+        <condition-column52>
+          <typedDefaultValue>
+            <valueString></valueString>
+            <dataType>STRING</dataType>
+            <isOtherwise>false</isOtherwise>
+          </typedDefaultValue>
+          <hideColumn>false</hideColumn>
+          <width>-1</width>
+          <header>State Code</header>
+          <constraintValueType>1</constraintValueType>
+          <factField>stateCode</factField>
+          <fieldType>String</fieldType>
+          <operator>==</operator>
+          <valueList>VA,MD,DC</valueList>
+          <parameters/>
+        </condition-column52>
+      </conditions>
+      <window>
+        <parameters/>
+      </window>
+    </Pattern52>
+  </conditionPatterns>
   <actionCols/>
   <auditLog>
     <filter class="org.drools.guvnor.client.modeldriven.dt52.auditlog.DecisionTableAuditLogFilter">
