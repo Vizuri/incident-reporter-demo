@@ -2,6 +2,7 @@ package com.redhat.vizuri.summit17.processes;
 
 import com.redhat.vizuri.demo.domain.Remediation;
 import com.redhat.vizuri.demo.domain.Status;
+import com.redhat.vizuri.demo.domain.Step;
 import java.util.ArrayList;
 
 rule "Assign remediation"
