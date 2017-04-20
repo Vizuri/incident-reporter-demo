@@ -3,6 +3,7 @@ package com.redhat.vizuri.summit17.processes;
 import com.redhat.vizuri.demo.domain.Remediation;
 import com.redhat.vizuri.demo.domain.Incident;
 import com.redhat.vizuri.demo.domain.Status;
+import com.redhat.vizuri.demo.domain.Step;
 
 rule "High risk incident"
     agenda-group "assess-risk"
@@ -12,6 +13,19 @@ when
 then
     modify($r) {
         setPriority(10)
+    }
+end
+
+rule "Add steps"
+    agenda-group "assess-risk"
+when
+    $i : Incident ( )
+    $r : Remediation ( incidentId == $i.id, steps == null )
+    $steps : ArrayList ( )
+        from collect ( Step ( ) )
+then
+    modify ($r) {
+        setSteps($steps);
     }
 end
 
