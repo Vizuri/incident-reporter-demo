@@ -1,0 +1,70 @@
+
+<form id="1316439637">
+<property name="name" value="processes.report-incident-taskform.form"/>
+<property name="displayMode" value="default"/>
+<property name="status" value="0"/>
+<field position="2" name="incident_id" type="InputTextLong" id="1448146705">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;id (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/id"/>
+<property name="fieldClass" value="java.lang.Long"/>
+</field>
+<field position="7" name="incident_stateCode" type="InputText" id="112057679">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;stateCode (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/stateCode"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="1" name="incident_description" type="InputText" id="2042979647">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;description (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/description"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="4" name="incident_incidentType" type="InputText" id="783781421">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;incidentType (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/incidentType"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="8" name="incident_zipCode" type="InputText" id="49710876">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;zipCode (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/zipCode"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="0" name="incident_buildingName" type="InputText" id="1818896513">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;buildingName (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/buildingName"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="6" name="incident_severity" type="Subform" id="1888989258">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;severity (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/severity"/>
+<property name="fieldClass" value="java.lang.Object"/>
+</field>
+<field position="3" name="incident_incidentDate" type="InputDate" id="951787253">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;incidentDate (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/incidentDate"/>
+<property name="fieldClass" value="java.util.Date"/>
+</field>
+<field position="5" name="incident_reporterUserId" type="InputTextLong" id="2084805804">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;reporterUserId (incident)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="incident/reporterUserId"/>
+<property name="fieldClass" value="java.lang.Long"/>
+</field>
+<dataHolder supportedType="className" inputId="" name="#E9E371" type="dataModelerEntry" outId="incident" value="com.redhat.vizuri.demo.domain.Incident" id="incident"/>
+</form>
