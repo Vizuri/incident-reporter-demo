@@ -24,7 +24,7 @@ when
     $i : Incident ( )
     $r : Remediation ( incidentId == $i.id, steps == null )
     $steps : ArrayList ( )
-        from collect ( Step ( incidentType == $i.incidentType ) )
+        from collect ( Step ( ) )
 then
     modify ($r) {
         setSteps($steps);
