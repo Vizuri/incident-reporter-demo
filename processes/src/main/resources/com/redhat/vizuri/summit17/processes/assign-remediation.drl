@@ -5,6 +5,8 @@ import com.redhat.vizuri.demo.domain.Status;
 import com.redhat.vizuri.demo.domain.Step;
 import java.util.ArrayList;
 
+dialect "mvel"
+
 rule "Assign remediation"
     agenda-group "assign-remediation"
 when
