@@ -1,0 +1,319 @@
+{
+	"variables": [],
+	"info": {
+		"name": "summit17-demo",
+		"_postman_id": "7bafee1a-643f-038b-84f5-ea0e392171c9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List deployments",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Run Hello Rules",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/instances/{{containerId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : \"HelloRulesSession\",\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"org.openshift.quickstarts.decisionserver.hellorules.Person\":{\n  \"name\" : \"vizuri\"\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"person\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get greeting\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"greetings\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Containers",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"org.openshift.quickstarts.decisionserver.hellorules.Person\":{\n  \"name\" : \"vizuri\"\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"my-user-fact\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"fired\"\n    }\n  }, {\n    \"get-objects\" : {\n      \"class-object-filter\" : {\n        \"string\" : \"org.openshift.quickstarts.decisionserver.hellorules.Greeting\"\n      },\n      \"out-identifier\" : \"facts\"\n    }\n  } ]\n} "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Container",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"org.openshift.quickstarts.decisionserver.hellorules.Person\":{\n  \"name\" : \"vizuri\"\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"my-user-fact\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"fired\"\n    }\n  }, {\n    \"get-objects\" : {\n      \"class-object-filter\" : {\n        \"string\" : \"org.openshift.quickstarts.decisionserver.hellorules.Greeting\"\n      },\n      \"out-identifier\" : \"facts\"\n    }\n  } ]\n} "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Server Status",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Decisions - Get Questionnaires",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/instances/{{containerId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Get Process Definitions",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/queries/containers/{{containerId}}/processes/definitions",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Start Process Instance",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/processes.report-incident/instances",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Get Process Instance Image",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/images/processes/instances/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/svg+xml",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Local SpringBoot Services",
+			"request": {
+				"url": "http://localhost:8080/api/tickets/search/findByWorkerIdAndStatus?workerId=99&&status=completed",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Remote SpringBoot Services",
+			"request": {
+				"url": "http://services-incident-demo.apps.ocp.hucmaggie.com/api/tickets/search/findByWorkerIdAndStatus?workerId=99&&status=completed",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
