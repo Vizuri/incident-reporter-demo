@@ -13,7 +13,7 @@ when
     // $w : Worker ( skill == $r.requiredSkill )
 then
     modify ($r) {
-        setWorkerId(99l);
+        setWorkerId(99l),
         setStatus(Status.ASSIGNED)
     }
 end
