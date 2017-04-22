@@ -1,5 +1,3 @@
-package com.redhat.vizuri.summit17.processes;
-
 import com.redhat.vizuri.demo.domain.Remediation;
 import com.redhat.vizuri.demo.domain.Status;
 import java.util.ArrayList;

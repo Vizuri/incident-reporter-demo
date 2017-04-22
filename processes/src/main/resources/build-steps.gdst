@@ -150,7 +150,7 @@
       </org.drools.workbench.models.datamodel.imports.Import>
     </imports>
   </imports>
-  <packageName>com.redhat.vizuri.summit17.processes</packageName>
+  <packageName></packageName>
   <tableFormat>EXTENDED_ENTRY</tableFormat>
   <data>
     <list>

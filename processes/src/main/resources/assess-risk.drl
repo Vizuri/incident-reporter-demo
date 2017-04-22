@@ -1,5 +1,3 @@
-package com.redhat.vizuri.summit17.processes;
-
 import com.redhat.vizuri.demo.domain.Remediation;
 import com.redhat.vizuri.demo.domain.Incident;
 import com.redhat.vizuri.demo.domain.Status;
@@ -7,7 +5,7 @@ import com.redhat.vizuri.demo.domain.Step;
 
 rule "High risk incident"
     agenda-group "assess-risk"
-when 
+when
     Incident( incidentType == "danger")
     $r: Remediation ( priority == null )
 then
