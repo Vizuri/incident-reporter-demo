@@ -6,7 +6,7 @@
   </rowNumberCol>
   <descriptionCol>
     <hideColumn>false</hideColumn>
-    <width>-1</width>
+    <width>58</width>
   </descriptionCol>
   <metadataCols/>
   <attributeCols>
@@ -89,7 +89,7 @@
         <isOtherwise>false</isOtherwise>
       </typedDefaultValue>
       <hideColumn>false</hideColumn>
-      <width>-1</width>
+      <width>203</width>
       <header>Description</header>
       <factType>Step</factType>
       <boundName>$s</boundName>
@@ -104,7 +104,7 @@
         <isOtherwise>false</isOtherwise>
       </typedDefaultValue>
       <hideColumn>false</hideColumn>
-      <width>-1</width>
+      <width>102</width>
       <header>Required</header>
       <factType>Step</factType>
       <boundName>$s</boundName>
