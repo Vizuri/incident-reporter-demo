@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="vizuri-icon-blue.png">
+<title>BPMS Process Flow Tracker</title>
+<link href="lib/css/bootstrap.css" rel="stylesheet">
+<link href="lib/css/bootstrap-theme.css" rel="stylesheet">
+
+<style type="text/css">
+	#image {
+		height: 400px;
+		width: 808px;
+		overflow: hidden;
+		padding-top: 20px;
+		float: left;
+	}
+	
+	#comments {
+		width: 600px;
+		float: left;
+	}
+
+</style>
+</head>
+<body ng-app="bpmsFlowApp">
+	<div ng-controller="MainController as vm" ng-clock>
+		<br>
+		<div class="container-fluid">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">BPM Suite Process Instance Tracker</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<form class="form-inline">
+							<div class="form-group">
+								<label for="pId">Process Id</label> <input type="text" class="form-control" id="pId" placeholder="1" ng-model="vm.processId">&nbsp;
+								<label for="pContainerId">Container Id</label> <input type="text" class="form-control" id="pContainerId" placeholder="IncidentProcessorContainer" ng-model="vm.containerId">&nbsp;
+								<button class="btn btn-default" ng-click="vm.load()">Update</button>
+								 &nbsp; &nbsp;<input type="checkbox" class="form-control" p="pAutoUpdate" ng-model="vm.autoUpdate" /> &nbsp; <label for="pAutoUpdate">Auto Update?</label>  <span ng-show="vm.autoUpdate">({{20 - vm.updateCount}} remaining)</span>
+							</div>
+							
+						</form>
+					</div>
+					<div class="row">
+						<div id="image"><br /></div>
+					
+						<div id="comments">
+							<p>Comments
+							<ul class="list-group">
+								<li ng-repeat="comment in vm.comments track by $index" class="list-group-item">{{comment}}</li>
+							</ul>
+							<div ng-if="vm.comments.length < 1">No comments added.</div>
+						</div>
+					</div>
+					<div class="row" style="padding-bottom: 50px; padding-left: 100px">
+						<div>Photo Thumbnails</div>
+						<img ng-repeat="photo in vm.photos track by $index" class="img-rounded" ng-src="{{photo}}" height="100px" style="padding-left: 20px;">
+						<div ng-if="vm.photos.length < 1">No photos uploaded.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="lib/js/angular.js"></script>
+	<script src="lib/js/x2js.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+</body>
+</html>
