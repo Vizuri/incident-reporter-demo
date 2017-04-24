@@ -7,18 +7,18 @@
   <bpmn2:itemDefinition id="_photoCounterItem" structureRef="Integer"/>
   <bpmn2:itemDefinition id="_notifyReporterItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="_notifyResponderItem" structureRef="Boolean"/>
-  <bpmn2:itemDefinition id="_photo1Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo2Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo3Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo4Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo5Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo6Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo7Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo8Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo9Item" structureRef="org.jbpm.Document"/>
-  <bpmn2:itemDefinition id="_photo10Item" structureRef="org.jbpm.Document"/>
+  <bpmn2:itemDefinition id="_photo1Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo2Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo3Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo4Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo5Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo6Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo7Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo8Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo9Item" structureRef="org.jbpm.document.Document"/>
+  <bpmn2:itemDefinition id="_photo10Item" structureRef="org.jbpm.document.Document"/>
   <bpmn2:itemDefinition id="_nextCommentItem" structureRef="String"/>
-  <bpmn2:itemDefinition id="_nextPhotoItem" structureRef="org.jbpm.Document"/>
+  <bpmn2:itemDefinition id="_nextPhotoItem" structureRef="org.jbpm.document.Document"/>
   <bpmn2:itemDefinition id="_lastUpdaterItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_finalCommentsItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__585B5A79-F7D7-44BD-BE62-0F0B57331383_remediationInputXItem" structureRef="com.redhat.vizuri.demo.domain.Remediation"/>
@@ -336,7 +336,7 @@ lastUpdater = null;
           <bpmn2:dataInput id="_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_GroupIdInputX" drools:dtype="Object" name="GroupId"/>
           <bpmn2:dataInput id="_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_SkippableInputX" drools:dtype="Object" name="Skippable"/>
           <bpmn2:dataOutput id="_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_commentOutputX" drools:dtype="String" name="comment"/>
-          <bpmn2:dataOutput id="_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_photoOutputX" drools:dtype="org.jbpm.Document" name="photo"/>
+          <bpmn2:dataOutput id="_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_photoOutputX" drools:dtype="org.jbpm.document.Document" name="photo"/>
           <bpmn2:dataOutput id="_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_updateSourceOutputX" drools:dtype="String" name="updateSource"/>
           <bpmn2:inputSet id="_sucn8SiOEeerUalVZM6VUw">
             <bpmn2:dataInputRefs>_1C63FCE7-A9A8-4D9A-AEAE-B88CB5F2B8AC_GroupIdInputX</bpmn2:dataInputRefs>

@@ -1,13 +1,16 @@
 package com.redhat.vizuri.demo.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.drools.core.command.impl.GenericCommand;
 import org.drools.core.command.runtime.BatchExecutionCommandImpl;
+import org.drools.core.command.runtime.process.StartProcessCommand;
 import org.drools.core.command.runtime.rule.AgendaGroupSetFocusCommand;
 import org.drools.core.command.runtime.rule.FireAllRulesCommand;
 import org.drools.core.command.runtime.rule.InsertObjectCommand;
@@ -75,6 +78,33 @@ public class CommandMarshallTest {
 		
 		BatchExecutionCommandImpl batch = new BatchExecutionCommandImpl(cmds);
 		//batch.setLookup("HelloRulesSession");
+		
+		String marshalled = marshaller.marshall(batch);
+		logger.info(">>> " + marshalled);
+	}
+	
+	@Test
+	public void testMarshallStartProcessWithVars() {
+		Set<Class<?>> classes = new HashSet<Class<?>>();
+		classes.add(Incident.class);
+		Marshaller marshaller = MarshallerFactory.getMarshaller(classes,  MarshallingFormat.JSON, CommandMarshallTest.class.getClassLoader());
+		
+		Incident incident = new Incident();
+		incident.setStateCode("VA");
+		incident.setBuildingName("building-a");
+		incident.setDescription("Programatically creating incident");
+		incident.setIncidentType("danger");
+		
+		StartProcessCommand startCommand = new StartProcessCommand();
+		startCommand.setProcessId("processes.report-incident");
+		Map<String,Object> parameters = new HashMap<String,Object>();
+		parameters.put("incident", incident);
+		startCommand.setParameters(parameters);
+		
+		List<GenericCommand<?>> cmds = new ArrayList<GenericCommand<?>>();
+		cmds.add(startCommand);
+		
+		BatchExecutionCommandImpl batch = new BatchExecutionCommandImpl(cmds);
 		
 		String marshalled = marshaller.marshall(batch);
 		logger.info(">>> " + marshalled);
