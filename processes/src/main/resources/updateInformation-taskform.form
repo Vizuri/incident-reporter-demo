@@ -1,0 +1,30 @@
+
+<form id="1991304974">
+<property name="name" value="updateInformation-taskform.form"/>
+<property name="displayMode" value="default"/>
+<property name="status" value="0"/>
+<field position="1" name="nextComment" type="InputText" id="36100263">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;comment (nextComment)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="comment"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="0" name="lastUpdater" type="InputText" id="1102951039">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;updateSource (lastUpdater)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="updateSource"/>
+<property name="fieldClass" value="java.lang.String"/>
+</field>
+<field position="2" name="nextPhoto" type="Document" id="1182544110">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;enquot;,quot;photo (nextPhoto)quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="photo"/>
+<property name="fieldClass" value="org.jbpm.document.Document"/>
+</field>
+<dataHolder inputId="" name="#0000A0" type="basicType" outId="updateSource" value="java.lang.String" id="lastUpdater"/>
+<dataHolder inputId="" name="#FF8881" type="basicType" outId="comment" value="java.lang.String" id="nextComment"/>
+<dataHolder inputId="" name="#000000" type="basicType" outId="photo" value="org.jbpm.document.Document" id="nextPhoto"/>
+</form>
