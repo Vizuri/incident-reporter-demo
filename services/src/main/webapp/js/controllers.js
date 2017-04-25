@@ -116,7 +116,8 @@
 						withCredentials : true,
 						url : baseUrl + 'containers/'+vm.containerId+'/tasks/'+approveTask["task-id"]+'/states/completed?auto-progress=true',
 						headers: {
-							   'Accept': 'application/json'
+							   'Accept': 'application/json',
+							   'Content-Type': 'application/json'
 							 },
 						data: { 'comments' : 'approved from supervisor app' }
 					}).then(function successCallback(response) {
