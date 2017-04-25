@@ -1,0 +1,893 @@
+{
+	"variables": [],
+	"info": {
+		"name": "summit17-demo",
+		"_postman_id": "7bafee1a-643f-038b-84f5-ea0e392171c9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Container - Server Status",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Container - Create Container",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<kie-container container-id=\"{{containerId}}\">\r\t<release-id>\r\t\t<group-id>com.redhat.vizuri.summit17</group-id>\r\t\t<artifact-id>processes</artifact-id>\t\t\r\t\t<version>0.0.1-SNAPSHOT</version>\r\t</release-id>\r</kie-container>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Container - List deployments",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Container - Get Containers",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"org.openshift.quickstarts.decisionserver.hellorules.Person\":{\n  \"name\" : \"vizuri\"\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"my-user-fact\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"fired\"\n    }\n  }, {\n    \"get-objects\" : {\n      \"class-object-filter\" : {\n        \"string\" : \"org.openshift.quickstarts.decisionserver.hellorules.Greeting\"\n      },\n      \"out-identifier\" : \"facts\"\n    }\n  } ]\n} "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Container- Scanner Status",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/scanner",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<kie-scanner status=\"STARTED\" poll-interval=\"60\"/>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Container- Start Scanner",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/scanner",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<kie-scanner status=\"STARTED\" poll-interval=\"60\"/>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "HelloRules - Say Hello",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/instances/{{containerId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : \"HelloRulesSession\",\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"org.openshift.quickstarts.decisionserver.hellorules.Person\":{\n  \"name\" : \"vizuri\"\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"person\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get greeting\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"greetings\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Decisions - Get Questionnaires",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/instances/{{containerId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : \"summit17-ks\",\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : true,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Decisions - Update Questions",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/instances/{{containerId}}",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : \"summit17-ks\",\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Question\":{\n  \"questionId\" : \"win-1\",\n  \"questionnaireId\" : 1,\n  \"groupId\" : null,\n  \"description\" : \"Is the crack larger than a quarter?\",\n  \"answerType\" : \"YES_NO\",\n  \"required\" : false,\n  \"enabled\" : true,\n  \"order\" : 1,\n  \"options\" : [ ]\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"question-1\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Question\":{\n  \"questionId\" : \"win-2\",\n  \"questionnaireId\" : 1,\n  \"groupId\" : null,\n  \"description\" : \"Is the crack larger than a dollar bill?\",\n  \"answerType\" : \"YES_NO\",\n  \"required\" : false,\n  \"enabled\" : false,\n  \"order\" : 2,\n  \"options\" : [ ]\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"question-2\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Question\":{\n  \"questionId\" : \"win-3\",\n  \"questionnaireId\" : 1,\n  \"groupId\" : null,\n  \"description\" : \"Was the car in motion at the time?\",\n  \"answerType\" : \"YES_NO\",\n  \"required\" : false,\n  \"enabled\" : true,\n  \"order\" : 3,\n  \"options\" : [ ]\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"question-3\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Question\":{\n  \"questionId\" : \"win-4\",\n  \"questionnaireId\" : 1,\n  \"groupId\" : null,\n  \"description\" : \"Does the damage impair the drivers vision?\",\n  \"answerType\" : \"YES_NO\",\n  \"required\" : false,\n  \"enabled\" : true,\n  \"order\" : 4,\n  \"options\" : [ ]\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"question-4\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Answer\":{\n  \"questionId\" : \"win-1\",\n  \"groupId\" : null,\n  \"strValue\" : \"Yes\",\n  \"updatedValue\" : false,\n  \"lastUpdated\" : 1493093649773,\n  \"delete\" : false\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"answer\",\n      \"return-object\" : true,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"sync-answers\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"sync-answers-fired\"\n    }\n  } ]\n} "
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Get Process Definitions",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/queries/containers/{{containerId}}/processes/definitions",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Start Process Instance",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/processes.report-incident/instances",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Start Process Instance with Incident",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/processes.report-incident/instances",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"incident\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n\t\t  \"id\" : null,\n\t\t  \"reporterUserId\" : null,\n\t\t  \"incidentType\" : \"danger\",\n\t\t  \"description\" : \"Programatically creating incident\",\n\t\t  \"incidentDate\" : null,\n\t\t  \"buildingName\" : \"building-a\",\n\t\t  \"stateCode\" : \"VA\",\n\t\t  \"zipCode\" : null,\n\t\t  \"severity\" : null\n\t  }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - List Signals for Process",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/instances/2/signals",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Update Information\""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Signal Process Instance for Update",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/instances/signal/Update%20Information?instanceId=1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - List Task Definitions for Process",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/definitions/processes.report-incident/tasks/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Update Information\""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - List Tasks for Process Instance",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/queries/tasks/instances/process/1?status=Ready",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"Update Information\""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - List States for Task",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/tasks/1/states/claimed?user=kspokas",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Start Update Information Task",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/tasks/1/states/started",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Complete Update Information Task",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/tasks/3/states/completed?auto-progress=true",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\" : \"hello from postman3\",\n\t\"photoId\" : \"blip-question-108.png\",\n\t\"updateSource\" : \"responder\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Get Process Instance Details withVars",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/queries/processes/instances/1?withVars=true",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Get Process Definition Image",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/images/processes/processes.report-incident",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Get Process Instance Image",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/images/processes/instances/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "image/jpg",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Add Attachment to Update Task",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/tasks/4/attachments?name=photo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "image/png",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Add Comment to Task Instance",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/queries/processes/instances",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lookup\" : null,\n  \"commands\" : [ {\n    \"insert\" : {\n      \"object\" : {\"com.redhat.vizuri.demo.domain.Incident\":{\n  \"id\" : null,\n  \"reporterUserId\" : null,\n  \"incidentType\" : \"windshield\",\n  \"description\" : null,\n  \"incidentDate\" : null,\n  \"buildingName\" : null,\n  \"stateCode\" : null,\n  \"zipCode\" : null,\n  \"severity\" : null\n}},\n      \"disconnected\" : false,\n      \"out-identifier\" : \"incident\",\n      \"return-object\" : false,\n      \"entry-point\" : \"DEFAULT\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"construct-customer-questions\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"construct-fired\"\n    }\n  }, {\n    \"set-focus\" : {\n      \"name\" : \"question-cleanup\"\n    }\n  }, {\n    \"fire-all-rules\" : {\n      \"max\" : -1,\n      \"out-identifier\" : \"cleanup-fired\"\n    }\n  }, {\n    \"query\" : {\n      \"name\" : \"get-questionnaires\",\n      \"arguments\" : [ ],\n      \"out-identifier\" : \"questionnaires\"\n    }\n  } ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Services - Local SpringBoot Services",
+			"request": {
+				"url": "http://localhost:8180/api/tickets/search/findByWorkerIdAndStatus?workerId=99&&status=completed",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Services - Remote SpringBoot Services",
+			"request": {
+				"url": "http://services-incident-demo.apps.ocp.hucmaggie.com/api/tickets/search/findByWorkerIdAndStatus?workerId=99&&status=completed",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Services - Local SpringBoot Upload File",
+			"request": {
+				"url": "http://localhost:8180/photos/2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"enabled": true,
+							"src": "blip-question-95.png"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Services - Remote SpringBoot Upload File",
+			"request": {
+				"url": "http://services-incident-demo.apps.ocp.hucmaggie.com/photos/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"enabled": true,
+							"src": "blip-question-108.png"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Services - Local SpringBoot Get File",
+			"request": {
+				"url": "http://localhost:8180/photos/2/blip-question-95.png",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"enabled": true,
+							"src": "blip-question-95.png"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Services - Local SpringBoot Get File List for Process",
+			"request": {
+				"url": "http://localhost:8180/photos/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"enabled": true,
+							"src": "blip-question-95.png"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Signal Process Instance for Perform Remediation",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/processes/instances/signal/Perform%20Remediation?instanceId=1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Processes - Complete Perform Remediation Task",
+			"request": {
+				"url": "{{host}}/kie-server/services/rest/server/containers/{{containerId}}/tasks/4/states/completed?auto-progress=true",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{basicAuth}}",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"completed\" : true\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
