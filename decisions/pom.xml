@@ -7,15 +7,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>kjar</packaging>
   <name>decisions</name>
- 
-  <repositories>
-	<repository>
-		<id>custom-repo</id>
-		<name>custom repo</name>
-		<url>http://nexus-nexus.apps.ocp.hucmaggie.com/repository/maven-snapshots/</url>
-	</repository>
-  </repositories>
-  
   <dependencies>
     <dependency>
       <groupId>com.redhat.vizuri.summit17</groupId>
@@ -23,6 +14,13 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
+  <repositories>
+    <repository>
+      <id>custom-repo</id>
+      <name>custom repo</name>
+      <url>http://nexus-nexus.apps.ocp.hucmaggie.com/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
@@ -33,5 +31,4 @@
       </plugin>
     </plugins>
   </build>
-	
 </project>
