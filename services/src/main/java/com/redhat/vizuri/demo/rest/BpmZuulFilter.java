@@ -33,10 +33,12 @@ public class BpmZuulFilter extends ZuulFilter {
 		HttpServletRequest request = ctx.getRequest();
 		log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 		
-		Enumeration<String> headerNames = request.getHeaderNames();
-		while (headerNames.hasMoreElements()) {
-			String headerName = headerNames.nextElement();
-			log.info(">>> Header: " + headerName + " = " + String.valueOf(request.getHeader(headerName)));
+		if (log.isDebugEnabled()) {
+			Enumeration<String> headerNames = request.getHeaderNames();
+			while (headerNames.hasMoreElements()) {
+				String headerName = headerNames.nextElement();
+				log.debug(">>> Header: " + headerName + " = " + String.valueOf(request.getHeader(headerName)));
+			}
 		}
 		return null;
 	}

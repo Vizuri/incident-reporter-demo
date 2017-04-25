@@ -17,6 +17,7 @@
 		vm.autoUpdate = false;
 
 		vm.load = load;
+		vm.approve = approve;
 
 		function load() {
 			loadImage();
@@ -88,8 +89,48 @@
 			});
 		}
 
-		//load();
-
+		function approve() {
+			var baseUrl = location.protocol + '//' + location.host + '/bpm/kie-server/services/rest/server/';
+			$log.info('Approving');
+			$http({
+				method : 'GET',
+				withCredentials : true,
+				url : baseUrl + 'queries/tasks/instances/process/'+vm.processId+'?status=Ready',
+				headers: {
+					   'Accept': 'application/json'
+					 }
+			}).then(function successCallback(response) {
+				var data = response.data;
+				var approveTask;
+				for (var i = 0; i < data['task-summary'].length; i++) {
+					var taskSummary = data['task-summary'][i];
+					if (taskSummary['task-status'] === 'Ready' && taskSummary['task-name'] === 'Review Case') {
+						approveTask = taskSummary;
+						break;
+					}
+				}
+				
+				if (approveTask) {
+					$http({
+						method : 'PUT',
+						withCredentials : true,
+						url : baseUrl + 'containers/'+vm.containerId+'/tasks/'+approveTask["task-id"]+'/states/completed?auto-progress=true',
+						headers: {
+							   'Accept': 'application/json'
+							 },
+						data: { 'comments' : 'approved from supervisor app' }
+					}).then(function successCallback(response) {
+						vm.load();
+					}, function (error) {
+						$log.error('Error calling PUT to approve task');
+					});
+				}
+			}, function errorCallback(error) {
+				alert('Error while attempting to approve');
+				$log.error('Error loadingImage: ' + error);
+			});
+		}
+		
 		$interval(function() {
 			if (vm.autoUpdate) {
 				$log.info('Updating...');

@@ -21,7 +21,10 @@ import org.kie.server.api.marshalling.MarshallerFactory;
 import org.kie.server.api.marshalling.MarshallingFormat;
 import org.openshift.quickstarts.decisionserver.hellorules.Person;
 
+import com.redhat.vizuri.demo.domain.Answer;
+import com.redhat.vizuri.demo.domain.AnswerType;
 import com.redhat.vizuri.demo.domain.Incident;
+import com.redhat.vizuri.demo.domain.Question;
 
 public class CommandMarshallTest {
 	private static final transient Logger logger = Logger.getLogger(CommandMarshallTest.class);
@@ -56,7 +59,7 @@ public class CommandMarshallTest {
 	}
 	
 	@Test
-	public void testMarshallGetAvailableQuestionnaires() {
+	public void testMarshallGetQuestionnaireForIncident() {
 		Set<Class<?>> classes = new HashSet<Class<?>>();
 		classes.add(Incident.class);
 		Marshaller marshaller = MarshallerFactory.getMarshaller(classes,  MarshallingFormat.JSON, CommandMarshallTest.class.getClassLoader());
@@ -78,6 +81,89 @@ public class CommandMarshallTest {
 		
 		BatchExecutionCommandImpl batch = new BatchExecutionCommandImpl(cmds);
 		//batch.setLookup("HelloRulesSession");
+		
+		String marshalled = marshaller.marshall(batch);
+		logger.info(">>> " + marshalled);
+	}
+	
+	@Test
+	public void testMarshallUpdateQuestionnaire() {
+		Set<Class<?>> classes = new HashSet<Class<?>>();
+		classes.add(Incident.class);
+		Marshaller marshaller = MarshallerFactory.getMarshaller(classes,  MarshallingFormat.JSON, CommandMarshallTest.class.getClassLoader());
+		
+		List<GenericCommand<?>> cmds = new ArrayList<GenericCommand<?>>();
+		InsertObjectCommand insert = new InsertObjectCommand();
+		
+		Question question = new Question();
+		question.setQuestionId("win-1");
+		question.setDescription("Is the crack larger than a quarter?");
+		question.setQuestionnaireId(1l);
+		question.setAnswerType(AnswerType.YES_NO);
+		question.setRequired(false);
+		question.setEnabled(true);
+		question.setOrder(1);
+		insert.setObject(question);
+		insert.setReturnObject(true);
+		insert.setOutIdentifier("question-1");
+		cmds.add(insert);
+		
+		question = new Question();
+		question.setQuestionId("win-2");
+		question.setDescription("Is the crack larger than a dollar bill?");
+		question.setQuestionnaireId(1l);
+		question.setAnswerType(AnswerType.YES_NO);
+		question.setRequired(false);
+		question.setEnabled(false);
+		question.setOrder(2);
+		insert = new InsertObjectCommand();
+		insert.setObject(question);
+		insert.setReturnObject(true);
+		insert.setOutIdentifier("question-2");
+		cmds.add(insert);
+		
+		question = new Question();
+		question.setQuestionId("win-3");
+		question.setDescription("Was the car in motion at the time?");
+		question.setQuestionnaireId(1l);
+		question.setAnswerType(AnswerType.YES_NO);
+		question.setRequired(false);
+		question.setEnabled(true);
+		question.setOrder(3);
+		insert = new InsertObjectCommand();
+		insert.setObject(question);
+		insert.setReturnObject(true);
+		insert.setOutIdentifier("question-3");
+		cmds.add(insert);
+		
+		question = new Question();
+		question.setQuestionId("win-4");
+		question.setDescription("Does the damage impair the drivers vision?");
+		question.setQuestionnaireId(1l);
+		question.setAnswerType(AnswerType.YES_NO);
+		question.setRequired(false);
+		question.setEnabled(true);
+		question.setOrder(4);
+		insert = new InsertObjectCommand();
+		insert.setObject(question);
+		insert.setReturnObject(true);
+		insert.setOutIdentifier("question-4");
+		cmds.add(insert);
+		
+		
+		Answer answer = new Answer();
+		answer.setQuestionId("win-1");
+		answer.setStrValue("Yes");
+		insert = new InsertObjectCommand();
+		insert.setObject(answer);
+		insert.setReturnObject(false);
+		cmds.add(insert);
+		
+		cmds.add(new AgendaGroupSetFocusCommand("sync-answers"));
+		cmds.add(new FireAllRulesCommand("sync-answers-fired"));
+		
+		BatchExecutionCommandImpl batch = new BatchExecutionCommandImpl(cmds);
+		batch.setLookup("summit17-ks");
 		
 		String marshalled = marshaller.marshall(batch);
 		logger.info(">>> " + marshalled);
@@ -109,4 +195,6 @@ public class CommandMarshallTest {
 		String marshalled = marshaller.marshall(batch);
 		logger.info(">>> " + marshalled);
 	}
+	
+	
 }
