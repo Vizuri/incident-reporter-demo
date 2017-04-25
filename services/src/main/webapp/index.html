@@ -9,16 +9,35 @@
 
 <style type="text/css">
 	#image {
-		height: 400px;
-		width: 808px;
+		height: 425px;
+		width: 725px;
 		overflow: hidden;
 		padding-top: 20px;
 		float: left;
 	}
 	
 	#comments {
-		width: 600px;
+		width: 500px;
 		float: left;
+	}
+	
+	.form-group {
+		margin-left: 20px;
+	}
+	
+	.img-wrapper {
+		width: 150px;
+		float: left;
+	}
+	
+	.img-rounded:hover {
+	    position:relative;
+	    top:-25px;
+	    left:-35px;
+	    width:500px;
+	    height:auto;
+	    display:block;
+	    z-index:999;
 	}
 
 </style>
@@ -35,8 +54,8 @@
 					<div class="row">
 						<form class="form-inline">
 							<div class="form-group">
-								<label for="pId">Process Id</label> <input type="text" class="form-control" id="pId" placeholder="1" ng-model="vm.processId">&nbsp;
-								<label for="pContainerId">Container Id</label> <input type="text" class="form-control" id="pContainerId" placeholder="IncidentProcessorContainer" ng-model="vm.containerId">&nbsp;
+								<label for="pId">Process Id</label> <input type="text" class="form-control" id="pId" placeholder="1" size="5" ng-model="vm.processId">&nbsp;
+								<label for="pContainerId">Container Id</label> <input type="text" class="form-control" id="pContainerId" placeholder="IncidentProcessorContainer" size="25" ng-model="vm.containerId">&nbsp;
 								<button class="btn btn-default" ng-click="vm.load()">Update</button>
 								 &nbsp; &nbsp;<input type="checkbox" class="form-control" p="pAutoUpdate" ng-model="vm.autoUpdate" /> &nbsp; <label for="pAutoUpdate">Auto Update?</label>  <span ng-show="vm.autoUpdate">({{20 - vm.updateCount}} remaining)</span>
 							</div>
@@ -47,24 +66,28 @@
 						<div id="image"><br /></div>
 					
 						<div id="comments">
-							<p>Comments
+							<h3>Comments</h3>
 							<ul class="list-group">
 								<li ng-repeat="comment in vm.comments track by $index" class="list-group-item">{{comment}}</li>
 							</ul>
-							<div ng-if="vm.comments.length < 1">No comments added.</div>
+							<div ng-if="vm.comments.length < 1"><i>No comments added.</i></div>
 						</div>
 					</div>
 					<div class="row" style="padding-bottom: 50px; padding-left: 100px">
-						<div>Photo Thumbnails</div>
-						<img ng-repeat="photo in vm.photos track by $index" class="img-rounded" ng-src="{{photo}}" height="100px" style="padding-left: 20px;">
-						<div ng-if="vm.photos.length < 1">No photos uploaded.</div>
+						<div><h3>Photo Thumbnails</h3></div>
+						<div id="gallery">
+							<div ng-repeat="photo in vm.photos track by $index" class="img-wrapper">
+								<a target="_blank" href="{{photo}}"><img  class="img-rounded" ng-src="{{photo}}" height="100px" style="padding-left: 20px;"></a>
+							</div>
+						</div>
+						
+						<div ng-if="vm.photos.length < 1"><i>No photos uploaded.</i></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script src="lib/js/angular.js"></script>
-	<script src="lib/js/x2js.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 </body>

@@ -20,48 +20,44 @@
 
 		function load() {
 			loadImage();
-			loadComments();
 			loadVars();
 		}
 
 		function loadVars() {
-			$log.info('loadVars not implemented yet');
-			/*$http({
+			$log.info('loadVars called');
+			$http({
 				method : 'GET',
 				withCredentials : true,
-				url : location.protocol + '//' + location.host + '/business-central/rest/runtime/com.redhat.vizuri.insurance:mobile-claims-bpm:1.0-SNAPSHOT/withvars/process/instance/' + vm.processId
-			}).then(function(response) {
-				var xml = response.data;
-				var x2js = new X2JS();
-				var document = x2js.xml2js(xml);
-				var rx = /^photo[0-9]?$/m;
-				var vars = document['process-instance-with-vars-response'].variables.entry;
+				url : location.protocol + '//' + location.host + '/bpm/kie-server/services/rest/server/queries/processes/instances/'+vm.processId+'?withVars=true',
+				headers: {
+					   'Accept': 'application/json'
+					 }
+			}).then(function successCallback(response) {
+				var data = response.data;
+				
+				vm.comments = [];
 				vm.photos = [];
-				for (var i = 0; i < vars.length; i++) {
-					if (rx.test(vars[i].key)) {
-						$log.info('Matched this key for photo: ' + vars[i].key);
-						vm.photos.push(location.protocol + '//' + location.host + '/summit-service/rest/vizuri/summit/download-photo/' + vm.processId + '/' + vars[i].value.substr(vars[i].value.indexOf('content=') + 8));
+				
+				if (data["process-instance-variables"]["incidentPhotoIds"]) {
+					var photoIdArr = data["process-instance-variables"]["incidentPhotoIds"];
+					photoIdArr = JSON.parse(photoIdArr.replace(/'/g, '"'));
+					for (var i = 0; i < photoIdArr.length; i++) {
+						var photoName = photoIdArr[i];
+						vm.photos.push(location.protocol + '//' + location.host + '/photos/' + vm.processId + '/' + photoName);
 					}
 				}
-			}, function(error) {
+				
+				if (data["process-instance-variables"]["incidentComments"]) {
+					var commentArr = data["process-instance-variables"]["incidentComments"];
+					commentArr = JSON.parse(commentArr.replace(/'/g, '"'));
+					vm.comments = commentArr;
+				} 
+				
+			}, function errorCallback(error) {
+				vm.comments = [];
+				vm.photos = [];
 				$log.error(error);
-			});*/
-		}
-
-		function loadComments() {
-			$log.info('loadComments not implemented yet');
-			/*$http({
-				method : 'GET',
-				headers : {
-					accept : 'application/json'
-				},
-				withCredentials : true,
-				url : location.protocol + '//' + location.host + '/business-central/rest/runtime/com.redhat.vizuri.insurance:mobile-claims-bpm:1.0-SNAPSHOT/process/instance/' + vm.processId + '/variable/claimComments'
-			}).then(function(response) {
-				vm.comments = response.data;
-			}, function(error) {
-				$log.error(error);
-			});*/
+			});
 		}
 
 		function loadImage() {
@@ -71,7 +67,8 @@
 				method : 'GET',
 				withCredentials : true,
 				url : targetUrl
-			}).then(function(response) {
+			}).then(function successCallback(response) {
+				$log.info('Successful loadImage call: ' + response.status)
 				var raw = response.data.substr(response.data.indexOf('svg') - 1);
 
 				var wrapper = document.getElementById('image');
@@ -79,13 +76,15 @@
 				
 				var svg = document.getElementsByTagName('svg')[0];
 				
-				svg.setAttribute('width', '808px');
-				svg.setAttribute('height', '630px');
+				svg.setAttribute('width', '900px');
+				svg.setAttribute('height', '600px');
 				svg.setAttribute('preserveAspectRatio', 'xMinYMid meet');
-				svg.setAttribute('viewBox', '140 40 1212 945');
+				svg.setAttribute('viewBox', '5 275 1500 500');
 				
-			}, function(error) {
-				$log.error(error);
+			}, function errorCallback(error) {
+				var wrapper = document.getElementById('image');
+				wrapper.innerHTML = '<i>No process image found</i>';
+				$log.error('Error loadingImage: ' + error);
 			});
 		}
 
