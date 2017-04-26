@@ -146,7 +146,7 @@ System.err.println("Created remediation!");]]></bpmn2:script>
           <drools:metaValue><![CDATA[Assign Remediation]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.ASSIGNED);]]></drools:script>
+          <drools:script><![CDATA[kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.Status.ASSIGNED);]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_6B885263-F484-46FD-9D51-F184E3B35B1B</bpmn2:incoming>
@@ -207,10 +207,10 @@ kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.Status.DEFE
           <drools:metaValue><![CDATA[Remediate Incident]]></drools:metaValue>
         </drools:metaData>
         <drools:onEntry-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.IN_PROGRESS);]]></drools:script>
+          <drools:script><![CDATA[kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.Status.IN_PROGRESS);]]></drools:script>
         </drools:onEntry-script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.COMPLETE);]]></drools:script>
+          <drools:script><![CDATA[kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.Status.COMPLETED);]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_AF2B327A-64EC-4A9C-8728-47F4D5045AB5</bpmn2:incoming>
@@ -399,9 +399,9 @@ kcontext.setVariable("remediationSuccessful", true);]]></bpmn2:script>
         </drools:metaData>
         <drools:onEntry-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[if (remediationAccepted) {
-    kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.ACCEPTED);
+    kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.Status.ACCEPTED);
 } else {
-    kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.REJECTED);  
+    kcontext.setVariable("incidentStatus", com.redhat.vizuri.demo.domain.Status.REJECTED);  
 }]]></drools:script>
         </drools:onEntry-script>
       </bpmn2:extensionElements>
