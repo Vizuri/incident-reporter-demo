@@ -6,7 +6,7 @@ import com.redhat.vizuri.demo.domain.Step;
 rule "High risk incident"
     agenda-group "assess-risk"
 when
-    Incident( incidentType == "danger")
+    Incident( incidentType in ("danger", "windshield"))
     $r: Remediation ( priority == null )
 then
     modify($r) {
