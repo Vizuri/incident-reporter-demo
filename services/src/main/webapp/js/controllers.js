@@ -15,7 +15,11 @@
 		vm.photos = [];
 		vm.updateCount = 0;
 		vm.autoUpdate = false;
+		vm.completed = false;
 
+		vm.approvalComments = 'Approval from supervisor app!';
+		vm.remediationAccepted = true;
+		
 		vm.load = load;
 		vm.approve = approve;
 
@@ -38,6 +42,7 @@
 				
 				vm.comments = [];
 				vm.photos = [];
+				vm.completed = false;
 				
 				if (data["process-instance-variables"]["incidentPhotoIds"]) {
 					var photoIdArr = data["process-instance-variables"]["incidentPhotoIds"];
@@ -53,6 +58,15 @@
 					commentArr = JSON.parse(commentArr.replace(/'/g, '"'));
 					vm.comments = commentArr;
 				} 
+				
+				if (data["process-instance-variables"]["incidentStatus"]) {
+					var processStatus = data["process-instance-variables"]["incidentStatus"];
+					$log.info('Status: ', processStatus);
+					
+					if (processStatus === 'COMPLETED') {
+						vm.completed = true;
+					}
+				}
 				
 			}, function errorCallback(error) {
 				vm.comments = [];
@@ -119,7 +133,7 @@
 							   'Accept': 'application/json',
 							   'Content-Type': 'application/json'
 							 },
-						data: { 'comments' : 'approved from supervisor app' }
+						data: { 'comments' : vm.approvalComments, 'accepted' : vm.remediationAccepted }
 					}).then(function successCallback(response) {
 						vm.load();
 					}, function (error) {

@@ -10,7 +10,7 @@
 <style type="text/css">
 	#image {
 		height: 425px;
-		width: 725px;
+		width: 775px;
 		overflow: hidden;
 		padding-top: 20px;
 		float: left;
@@ -58,9 +58,10 @@
 								<label for="pContainerId">Container Id</label> <input type="text" class="form-control" id="pContainerId" placeholder="IncidentProcessorContainer" size="25" ng-model="vm.containerId">&nbsp;
 								<button class="btn btn-default" ng-click="vm.load()">Update</button>
 								 &nbsp; &nbsp;<input type="checkbox" class="form-control" p="pAutoUpdate" ng-model="vm.autoUpdate" /> &nbsp; <label for="pAutoUpdate">Auto Update?</label>  <span ng-show="vm.autoUpdate">({{20 - vm.updateCount}} remaining)</span>
-								 &nbsp; &nbsp;<button class="btn btn-default" ng-click="vm.approve()">Approve</button>
+								 &nbsp; &nbsp;<button class="btn btn-default" ng-click="vm.approve()" ng-disabled="!vm.completed">Approve</button>
+								 &nbsp; &nbsp;<input type="checkbox" class="form-control" id="pRemediationAccepted" ng-model="vm.remediationAccepted" ng-disabled="!vm.completed" /> &nbsp; <label for="pRemediationAccepted">Accepted?</label>
+								 &nbsp; &nbsp;<input type="text" class="form-control" id="pApprovalComments" size="25" ng-model="vm.approvalComments" ng-disabled="!vm.completed" placeholder="Approval Comments" />
 							</div>
-							
 						</form>
 					</div>
 					<div class="row">
