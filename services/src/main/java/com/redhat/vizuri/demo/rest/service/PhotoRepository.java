@@ -57,7 +57,7 @@ public class PhotoRepository {
 			
 			fileNameTable.get(processId).add(file.getOriginalFilename());
 			
-			return ResponseEntity.ok().body(new ActionResponse("successful file upload", fileName, true));
+			return ResponseEntity.ok().body(new ActionResponse("successful file upload", file.getOriginalFilename(), true));
 		} catch (IOException ex) {
 			log.error("Error uploading picture", ex);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ActionResponse("Error uploading file " + fileName, ex.getMessage(), false));
