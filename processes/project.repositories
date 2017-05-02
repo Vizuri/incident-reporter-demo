@@ -35,14 +35,6 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>custom-repo</id>
-        <url>http://nexus-nexus.apps.ocp.hucmaggie.com/repository/maven-snapshots/</url>
-        <source>PROJECT</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
         <id>jboss-maven-repository</id>
         <url>http://maven.repository.redhat.com/techpreview/all/</url>
         <source>SETTINGS</source>
