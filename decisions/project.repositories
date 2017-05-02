@@ -3,8 +3,16 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>vaadin-addons</id>
-        <url>http://maven.vaadin.com/vaadin-addons</url>
+        <id>jboss-ga-repository</id>
+        <url>http://maven.repository.redhat.com/techpreview/all</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss-ga-plugin-repository</id>
+        <url>http://maven.repository.redhat.com/techpreview/all</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
@@ -20,24 +28,8 @@
       <include>true</include>
       <metadata>
         <id>local</id>
-        <url>/home/maggiehu/.m2/repository</url>
+        <url>/Users/kspokas/.m2/repository</url>
         <source>LOCAL</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>custom-repo</id>
-        <url>http://nexus-nexus.apps.ocp.hucmaggie.com/repository/maven-snapshots/</url>
-        <source>PROJECT</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>jboss-maven-repository</id>
-        <url>http://maven.repository.redhat.com/techpreview/all/</url>
-        <source>SETTINGS</source>
       </metadata>
     </repository>
   </repositories>
