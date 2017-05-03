@@ -15,6 +15,7 @@ end
 
 rule "Add steps"
     agenda-group "assess-risk"
+    no-loop true
 when
     $i : Incident ( )
     $r : Remediation ( incidentId == $i.id, steps == null )
