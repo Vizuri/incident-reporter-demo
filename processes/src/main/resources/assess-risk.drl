@@ -19,7 +19,7 @@ rule "Add steps"
 when
     $i : Incident ( )
     $r : Remediation ( incidentId == $i.id, steps == null )
-    $steps : ArrayList ( )
+    $steps : ArrayList ( size > 0 )
         from collect ( Step ( ) )
 then
     modify ($r) {
