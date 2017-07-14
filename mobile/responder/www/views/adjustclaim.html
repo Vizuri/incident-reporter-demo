@@ -1,0 +1,29 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-header bar-assertive"><a
+            class="button button-icon icon ion-close-round" href="#/claims"></a>
+        <h1 class="title">Close Ticket</h1>
+    </ion-header-bar>
+    <ion-content class="has-footer">
+        <div class="list">
+          <div class="item">
+              <strong>Process Id</strong><br>{{vm.claim.processId}}
+          </div>
+          <div class="item">
+              <strong>Type: </strong>{{vm.claim.incident.incidentType}}
+          </div>
+          <div class="item">
+              <strong>Severity: </strong>{{vm.claim.incident.severity}}
+          </div>
+          <div class="item">
+              <strong>Description</strong>
+              <div>
+                  {{vm.claim.incident.description}}
+              </div>
+          </div>
+        </div>
+        <div class="button-bar">
+            <a class="button button-assertive" ng-click="vm.incompleteClaim()">InComplete</a>
+            <a class="button button-assertive" ng-click="vm.completeClaim()">Complete</a>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><widget android-versionCode="1" id="com.redhat.vizuri.demo.reporter" ios-CFBundleVersion="1.0" version="1.0">
+    <name>reporter</name>
+	<description>
+		Mobile demo using Red Hat BRMS, BPM Suite, OpenShift and 3Scale, oh my!
+	</description>
+	<content src="index.html"/>
+  <!-- TODO: Add your backend server urls to this whitelist -->
+  <access origin="http://localhost"/>
+  <access origin="http://localhost:8080"/>
+
+  <plugin name="cordova-plugin-whitelist" spec="https://github.com/apache/cordova-plugin-whitelist" />
+  <plugin name="cordova-plugin-device" spec="https://github.com/apache/cordova-plugin-device"/>
+  <plugin name="cordova-plugin-file" spec="https://github.com/apache/cordova-plugin-file"/>
+  <plugin name="cordova-plugin-file-transfer" spec="https://github.com/apache/cordova-plugin-file-transfer"/>
+  <plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera#2.2.0"/>
+  <plugin name="cordova-plugin-media" spec="https://github.com/apache/cordova-plugin-media"/>
+  <plugin name="cordova-plugin-media-capture" spec="https://github.com/apache/cordova-plugin-media-capture"/>
+  <plugin name="cordova-plugin-dialogs" spec="https://github.com/apache/cordova-plugin-dialogs"/>
+  <plugin name="cordova-plugin-vibration" spec="https://github.com/apache/cordova-plugin-vibration"/>
+  <plugin name="cordova-plugin-contacts" spec="https://github.com/apache/cordova-plugin-contacts"/>
+  <plugin name="cordova-plugin-splashscreen" spec="https://github.com/apache/cordova-plugin-splashscreen"/>
+  <plugin name="cordova-plugin-screen-orientation" spec="https://github.com/apache/cordova-plugin-screen-orientation"/>
+  <plugin name="com.feedhenry.plugins.apis" spec="https://github.com/fheng/fh-cordova-plugins-api.git#fh0.0.6"/>
+  <plugin name="com.feedhenry.plugins.apkdownloader" spec="https://github.com/feedhenry/fh-cordova-plugin-apkdownloader.git#fh0.0.1"/>
+  <plugin name="cordova-plugin-statusbar" spec="https://github.com/apache/cordova-plugin-statusbar"/>
+  <plugin name="com.feedhenry.plugin.device" spec="https://github.com/feedhenry/fh-cordova-plugin-device.git#fh0.0.3"/>
+  <plugin name="aerogear-cordova-push" spec="https://github.com/aerogear/aerogear-cordova-push#3.1.0"/>
+
+  <preference name="ShowSplashScreenSpinner" value="true"/>
+  <preference name="AutoHideSplashScreen" value="true"/>
+	<preference name="webviewbounce" value="false"/>
+ 	<preference name="UIWebViewBounce" value="false"/>
+ 	<preference name="DisallowOverscroll" value="true"/>
+ 	<preference name="android-minSdkVersion" value="16"/>
+ 	<preference name="BackupWebStorage" value="none"/>
+ 	<preference name="SplashScreen" value="screen"/>
+ 	<preference name="SplashScreenDelay" value="2000"/>
+  <preference name="android-targetSdkVersion" value="23" />
+  <preference name="android-minSdkVersion" value="16" />
+  <preference name="SplashMaintainAspectRatio" value="true" />
+ 	<feature name="StatusBar">
+		<param name="ios-package" value="CDVStatusBar" onload="true"/>
+ 	</feature>
+
+    <platform name="ios">
+        <icon height="60" src="www/res/icons/ios/Icon-60.png" width="60"/>
+        <icon height="120" src="www/res/icons/ios/Icon-60@2x.png" width="120"/>
+        <icon height="180" src="www/res/icons/ios/Icon-60@3x.png" width="180"/>
+        <icon height="72" src="www/res/icons/ios/Icon-72.png" width="72"/>
+        <icon height="76" src="www/res/icons/ios/Icon-76.png" width="76"/>
+        <icon height="152" src="www/res/icons/ios/Icon-76@2x.png" width="152"/>
+        <icon height="57" src="www/res/icons/ios/Icon.png" width="57"/>
+        <icon height="114" src="www/res/icons/ios/Icon@2x.png" width="114"/>
+        <splash height="960" src="www/res/splash/ios/Default@2x.png" width="640"/>
+        <splash height="480" src="www/res/splash/ios/Default.png" width="320"/>
+    </platform>
+    <platform name="android">
+        <icon density="ldpi" src="www/res/icons/android/icon-ldpi.png"/>
+        <icon density="mdpi" src="www/res/icons/android/icon-mdpi.png"/>
+        <icon density="hdpi" src="www/res/icons/android/icon-hdpi.png"/>
+        <icon density="xhdpi" src="www/res/icons/android/icon-xhdpi.png"/>
+        <splash height="480" src="www/res/splash/android/splash-mdpi.png"/>
+        <splash height="960" src="www/res/splash/android/splash-large.png" />
+    </platform>
+</widget>

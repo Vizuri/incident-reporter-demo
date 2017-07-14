@@ -1,0 +1,9 @@
+.project
+node_modules/
+.io-config.json
+ionic.project
+npm-debug.log
+platforms
+resources
+bower_components
+plugins

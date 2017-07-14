@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "692155487613",
+    "firebase_url": "https://summit17-responder.firebaseio.com",
+    "project_id": "summit17-responder",
+    "storage_bucket": "summit17-responder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692155487613:android:9a57f3c8c668ec71",
+        "android_client_info": {
+          "package_name": "com.redhat.vizuri.demo.responder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692155487613-lkujcjq3kiq8le0h8jrhj54niqqja0tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmetzDp1i7dl3rMx-JA0_poWtLwm9rYZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

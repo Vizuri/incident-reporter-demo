@@ -1,0 +1,36 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-header bar-assertive"><a
+            class="button button-icon icon ion-help-circled" href="#/landing"></a>
+        <h1 class="title">Work Tickets</h1>
+    </ion-header-bar>
+    <ion-content>
+
+        <div ng-if="vm.claimCount < 1">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <i class="icon ion-alert-circled"></i> There are no tickets!
+                </div>
+            </div>
+        </div>
+
+        <div class="incident-content-area">
+            <div class="card" ng-repeat="claim in vm.claims | orderBy : '-processId'">
+            <div class="item item-divider">
+                {{claim.incident.incidentType}}<a class="button button-small button-icon icon ion-arrow-right-c"
+                                                  style="float: right" ng-click="vm.loadClaimDetails(claim)"></a>
+            </div>
+            <div class="item item-text-wrap">
+                <ul class="list">
+                    <li class="item"><strong>Process Id</strong><br>{{claim.processId}}</li>
+                    <li class="item"><strong>Date</strong><br>{{claim.incident.incidentDate | date:'short'}}</li>
+                    <li class="item"><strong>Status</strong><br><strong>{{claim.incidentStatus}}</strong>
+                        <i class="icon ion-close-circled" ng-show="claim.incidentStatus === 'COMPLETED'"></i>
+                        <i class="icon ion-alert-circled" ng-show="claim.incidentStatus === 'IN_PROGRESS'"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+    </ion-content>
+</ion-view>

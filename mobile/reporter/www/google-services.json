@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "201611634688",
+    "firebase_url": "https://summit17-reporter.firebaseio.com",
+    "project_id": "summit17-reporter",
+    "storage_bucket": "summit17-reporter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201611634688:android:ea90b5ce79424eed",
+        "android_client_info": {
+          "package_name": "com.redhat.vizuri.demo.reporter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201611634688-tbe6bfoct0q041jrjl47b8bie9jag0en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnsQvWGTTfNwYzceH2Ax0iInh09NOyH3c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

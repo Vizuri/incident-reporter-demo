@@ -27,14 +27,6 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>local</id>
-        <url>/home/maggiehu/.m2/repository</url>
-        <source>LOCAL</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
         <id>jboss-maven-repository</id>
         <url>http://maven.repository.redhat.com/techpreview/all/</url>
         <source>SETTINGS</source>

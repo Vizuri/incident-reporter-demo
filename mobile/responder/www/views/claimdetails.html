@@ -1,0 +1,75 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-header bar-assertive"><a
+            class="button button-icon icon ion-arrow-left-c" href="#/claims"></a>
+        <h1 class="title">Ticket Details</h1>
+        <a ng-show="vm.claim.incidentStatus === 'IN_PROGRESS'" class="button button-assertive" href="#/adjustclaim">Close Ticket</a>
+    </ion-header-bar>
+    <ion-content>
+        <div class="incident-content-area">
+            <div ng-show="vm.hasClaim" class="list">
+                <div class="item">
+                    <strong>Process Id: </strong>{{vm.claim.processId}}
+                </div>
+                <div class="item">
+                    <strong>Type: </strong>{{vm.claim.incident.incidentType}}
+                </div>
+                <div class="item">
+                    <strong>Severity: </strong>{{vm.claim.incident.severity}}
+                </div>
+                <div class="item">
+                    <strong>Description</strong>
+                    <div>
+                        {{vm.claim.incident.description}}
+                    </div>
+                </div>
+                <div class="item">
+                    <strong>Reported Date: </strong>{{vm.claim.incident.incidentDate | date}}
+                </div>
+                <div class="item">
+                    <strong>Building Name: </strong>{{vm.claim.incident.buildingName}}
+                </div>
+                <div class="item">
+                    <strong>State: </strong>{{vm.claim.incident.stateCode}}
+                </div>
+                <div class="item">
+                    <strong>Postal Code: </strong>{{vm.claim.incident.zipCode}}
+                </div>
+                <div class="item">
+                    <strong>{{vm.claim.questionnaire.name}}</strong>
+                    <div ng-repeat="question in vm.claim.questionnaire.questions">
+                        {{$index + ") " + question.description}} - {{vm.answers[question.questionId].strValue}}
+                    </div>
+                </div>
+                <div class="item item-divider">Photos</div>
+                <div class="item" ng-show="vm.claim.incidentStatus === 'IN_PROGRESS'">
+                    <i class="icon ion-loading-c" ng-if="vm.showUploadSpinner"></i>
+                    <button class="button button-small icon-left ion-camera button-dark" ng-click="vm.takePhoto(1)">Take
+                        Photo
+                    </button>
+                    <button class="button button-small icon-left ion-folder button-dark" ng-click="vm.takePhoto(0)">Select
+                        Photo
+                    </button>
+                </div>
+                <div class="incident-photo-gallery">
+                    <div ng-repeat="photo in vm.claim.photos">
+                        <img width="30%" ng-src="{{photo}}">
+                    </div>
+                </div>
+                <br style="clear:both" /><br />
+                <div class="item item-divider">
+                    Comments<a style="float: right" class="button button-small button-dark" ng-click="vm.saveComment()"
+                               ng-show="claim.incidentStatus === 'IN_PROGRESS'">Save Comment</a>
+                </div>
+                <div class="item" ng-show="vm.claim.comments.length > 0">
+                    <div class="item" ng-repeat="comment in vm.claim.comments">{{comment.message}}</div>
+                </div>
+                <div class="item" ng-show="claim.incidentStatus === 'IN_PROGRESS'">
+                    <label class="item item-input item-stacked-label"> <span class="input-label">Add Comment</span>
+                        <textarea type="textarea" ng-model="vm.comment"></textarea></label>
+                </div>
+            </div>
+        </div>
+
+        <div ng-hide="vm.hasClaim">No ticket details.</div>
+    </ion-content>
+</ion-view>

@@ -296,7 +296,7 @@
 		{
 			"name": "Remote SpringBoot Services",
 			"request": {
-				"url": "http://services-incident-demo.apps.ocp.hucmaggie.com/api/tickets/search/findByWorkerIdAndStatus?workerId=99&&status=completed",
+				"url": "{{host}}/api/tickets/search/findByWorkerIdAndStatus?workerId=99&&status=completed",
 				"method": "GET",
 				"header": [
 					{

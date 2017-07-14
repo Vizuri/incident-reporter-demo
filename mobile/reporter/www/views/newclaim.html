@@ -1,0 +1,71 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar bar-header bar-dark"><a
+            class="button button-icon icon ion-close-round" href="#/claims" ng-show="vm.showIncident"></a>
+        <h1 class="title">New Incident</h1>
+        <button class="button button-dark" ng-click="vm.submitIncident()" ng-disabled="!vm.incidentType"
+                ng-if="vm.showIncident">Submit
+        </button>
+        <a class="button button-dark" ng-click="vm.finishIncident()" ng-if="vm.showQuestions">Finish</a>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <div ng-show="vm.showIncident">
+            <div class="list">
+                <label class="item item-input item-select item-stacked-label">
+                    <div class="input-label" style="max-width:50%">Incident Type</div>
+                    <select ng-model="vm.incidentType" ng-options="type for type in vm.incidentTypes"></select>
+                </label>
+                <label class="item item-input item-select item-stacked-label">
+                  <div class="input-label">Severity</div>
+                  <select ng-model="vm.severity" ng-options="severity for severity in vm.severities"></select>
+                </label>
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Description</span>
+                  <textarea type="textarea" ng-model="vm.description"></textarea>
+                </label>
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Incident Date</span>
+                  <input type="date" ng-model="vm.incidentDate" />
+                </label>
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Building Name</span>
+                  <input type="text" ng-model="vm.buildingName" />
+                </label>
+                <label class="item item-input item-select item-stacked-label">
+                  <div class="input-label">State</div>
+                  <select ng-model="vm.stateCode" ng-options="state as state for state in vm.states"></select>
+                </label>
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Postal Code</span>
+                  <input type="text" ng-model="vm.zipCode" />
+                </label>
+            </div>
+        </div>
+        <div ng-show="vm.showQuestions">
+            <ion-list>
+                <ion-item ng-repeat="question in vm.claim.questionnaire.questions" ng-show="question.enabled">
+                    <div ng-if="question.answerType === 'INTEGER' || question.answerType === 'TEXT'">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">{{question.description}}?</span>
+                            <input type="text" ng-change="vm.updateAnswers()"
+                                   ng-model="vm.answers[vm.claim.questionnaire.questions.indexOf(question)]" />
+                        </label>
+                    </div>
+                    <div ng-if="question.answerType === 'YES_NO'">
+                        <ion-checkbox ng-change="vm.updateAnswers()"
+                                      ng-model="vm.answers[vm.claim.questionnaire.questions.indexOf(question)]">
+                            {{question.description}}
+                        </ion-checkbox>
+                    </div>
+                    <div ng-if="question.answerType === 'OPTION'">
+                        <span class="input-label">{{question.description}}?</span>
+                        <ion-radio ng-repeat="option in question.options" ng-change="vm.updateAnswers()"
+                                   ng-model="vm.answers[vm.claim.questionnaire.questions.indexOf(question)]"
+                                   ng-value="option">
+                            {{option}}
+                        </ion-radio>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

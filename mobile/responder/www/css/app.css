@@ -1,0 +1,183 @@
+@import url("lib/fonts.css");
+@import url("main.css");
+
+@font-face {
+	font-family: OS-Regular;
+	src: url('fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+	font-family: OS-Light;
+	src: url('fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+	font-family: OS-Bold;
+	src: url('fonts/OpenSans-Bold.ttf');
+}
+
+body {
+	font-size: 12px;
+	font-family: OS-Light, sans-serif;
+}
+
+#app {
+	width: inherit;
+	height: inherit;
+}
+
+#count {
+	margin-top: 50px;
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.center>h3 {
+	color: #ffffff;
+	letter-spacing: 2px;
+	font-family: OS-Light, sans-serif;
+	font-size: 1.5em;
+}
+
+.center>h3>small {
+	color: #ffffff;
+	letter-spacing: 2px;
+	font-family: OS-Light, sans-serif;
+}
+
+.header-footer-bg {
+	background-color: #7ea1b6;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 5%;
+	color: #ffffff;
+}
+
+footer>div>small {
+	padding-top: 8px;
+	padding-right: 10px;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.center {
+	text-align: center;
+}
+
+.centerItem {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+/*
+ *  CUSTOM STYLING
+ */
+#description {
+	text-align: justify;
+	position: relative;
+	padding-top: 40px;
+	font-size: 1.5em;
+}
+
+.input-group {
+	display: block;
+}
+
+.cloudResponse {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.say-hello-button {
+	width: 100%;
+	margin: 5px 0 5px 0;
+	padding: 5px 5px 5px 5px;
+	font-size: 1.6em;
+	background-color: #4a87ee;
+	border: 1px solid #216CEC;
+	color: #fff;
+}
+
+.input-text {
+	width: 100%;
+	font-size: 2em;
+	margin: 0;
+	padding: 0 0 0 5px;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+}
+/*  none of this was applied earlier due to left-over merge text
+.input-div {
+	width: 100%;
+	padding: 5px 0 5px 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.superfill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+}
+*/
+#landing-page {
+    background-color: #B71C1C;
+    border-color: #B71C1C;
+    min-height: 100%;
+	margin: 0 !important;
+}
+
+#landing-page p {
+    color: white;
+    font-size: 27px;
+    line-height: normal;
+}
+
+.incident-content-area {
+	min-height: 400px;
+	overflow-y: auto;
+}
+
+.incident-photo-gallery div {
+		padding: 5px;
+		float: left;
+		width: 33%;
+}
+
+.incident-photo-gallery div img {
+	float: left;
+	width: 100%;
+}
