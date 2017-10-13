@@ -14,19 +14,17 @@ import org.springframework.context.annotation.Bean;
  */
 @EnableZuulProxy
 @SpringBootApplication
-public class IncidentServicesApp  extends SpringBootServletInitializer {
+public class IncidentServicesApp extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(applicationClass, args);
+		SpringApplication.run(IncidentServicesApp.class, args);
 	}
-	
+
 	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(applicationClass);
-    }
-	
-	private static Class<IncidentServicesApp> applicationClass = IncidentServicesApp.class;
-	
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(IncidentServicesApp.class);
+	}
+
 	@Bean
 	public BpmZuulFilter simpleFilter() {
 		return new BpmZuulFilter();

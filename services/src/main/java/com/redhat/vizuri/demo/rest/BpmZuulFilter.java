@@ -13,18 +13,13 @@ public class BpmZuulFilter extends ZuulFilter {
 	private static Logger log = Logger.getLogger(BpmZuulFilter.class);
 
 	@Override
-	public String filterType() {
-		return "pre";
-	}
-
-	@Override
 	public int filterOrder() {
 		return 1;
 	}
 
 	@Override
-	public boolean shouldFilter() {
-		return true;
+	public String filterType() {
+		return "pre";
 	}
 
 	@Override
@@ -32,7 +27,7 @@ public class BpmZuulFilter extends ZuulFilter {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 		log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
-		
+
 		if (log.isDebugEnabled()) {
 			Enumeration<String> headerNames = request.getHeaderNames();
 			while (headerNames.hasMoreElements()) {
@@ -41,5 +36,10 @@ public class BpmZuulFilter extends ZuulFilter {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public boolean shouldFilter() {
+		return true;
 	}
 }
