@@ -33,7 +33,7 @@
 			$http({
 				method : 'GET',
 				withCredentials : true,
-				url : location.protocol + '//' + location.host + 'services-0.0.1-SNAPSHOT/bpm/kie-server/services/rest/server/queries/processes/instances/'+vm.processId+'?withVars=true',
+				url : location.protocol + '//' + location.host + '/services-0.0.1-SNAPSHOT/bpm/kie-server/services/rest/server/queries/processes/instances/'+vm.processId+'?withVars=true',
 				headers: {
 					   'Accept': 'application/json'
 					 }
@@ -49,7 +49,7 @@
 					photoIdArr = JSON.parse(photoIdArr.replace(/'/g, '"'));
 					for (var i = 0; i < photoIdArr.length; i++) {
 						var photoName = photoIdArr[i];
-						vm.photos.push(location.protocol + '//' + location.host + 'services-0.0.1-SNAPSHOT/photos/' + vm.processId + '/' + photoName);
+						vm.photos.push(location.protocol + '//' + location.host + '/services-0.0.1-SNAPSHOT/photos/' + vm.processId + '/' + photoName);
 					}
 				}
 				
@@ -76,7 +76,7 @@
 		}
 
 		function loadImage() {
-			var targetUrl = location.protocol + '//' + location.host + 'services-0.0.1-SNAPSHOT/bpm/kie-server/services/rest/server/containers/' + vm.containerId + "/images/processes/instances/" + vm.processId;
+			var targetUrl = location.protocol + '//' + location.host + '/services-0.0.1-SNAPSHOT/bpm/kie-server/services/rest/server/containers/' + vm.containerId + "/images/processes/instances/" + vm.processId;
 			$log.info('Calling: ' + targetUrl);
 			$http({
 				method : 'GET',
@@ -104,7 +104,7 @@
 		}
 
 		function approve() {
-			var baseUrl = location.protocol + '//' + location.host + 'services-0.0.1-SNAPSHOT/bpm/kie-server/services/rest/server/';
+			var baseUrl = location.protocol + '//' + location.host + '/services-0.0.1-SNAPSHOT/bpm/kie-server/services/rest/server/';
 			$log.info('Approving');
 			$http({
 				method : 'GET',
