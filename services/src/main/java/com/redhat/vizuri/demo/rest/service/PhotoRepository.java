@@ -33,8 +33,8 @@ import com.redhat.vizuri.demo.rest.dto.FileDetails;
 
 @RestController
 public class PhotoRepository {
-	private static Logger log = Logger.getLogger(PhotoRepository.class);
 	
+	private static Logger log = Logger.getLogger(PhotoRepository.class);
 	private static Map<String, Set<String>> fileNameTable = new HashMap<String, Set<String>>();
 	
 	@CrossOrigin
